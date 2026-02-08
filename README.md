@@ -2,7 +2,8 @@
 
 A fully responsive web-based user interface for the **Mpuza platform**, designed to manage jobs, professional networks, and company information. Built with **HTML**, **CSS**, and **Bootstrap Icons**, this UI showcases features such as user profiles, job postings, company pages, and professional groups.
 
----
+---<img width="1336" height="610" alt="image" src="https://github.com/user-attachments/assets/9210486a-9303-4d08-abf5-5978f603bc06" />
+
 
 ## Table of Contents
 
