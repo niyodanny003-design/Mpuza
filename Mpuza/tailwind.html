@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mpuza UI</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mpuza: {
+              red:       '#e43d30',
+              blue:      '#2ea3d0',
+              lightblue: '#60bbe9',
+              badge:     '#1fb6ff',
+            },
+            pagebg:     '#e9f0f4',
+            sidebarbg:  'rgba(141,211,246,0.22)',
+            profilecard:'rgba(217,240,252,0.2)',
+          },
+          fontSize: {
+            '2xs': '0.65rem',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full m-0 p-0 font-sans bg-pagebg overflow-hidden">
+
+<!-- ─── FIXED TOP BAR ─────────────────────────────────────────────────────────── -->
+<header class="fixed top-0 inset-x-0 z-50 bg-mpuza-red text-white shadow-md">
+  <div class="flex items-center justify-between px-3 sm:px-4 md:px-5 lg:px-6 py-2.5">
+
+    <!-- Logo + Hamburger -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <div class="text-xl sm:text-2xl font-bold">Mpuza</div>
+      <button class="lg:hidden text-2xl sm:text-3xl focus:outline-none">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+
+    <!-- Navigation – icons always visible, labels appear later -->
+    <nav class="flex items-center gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-7 ml-3 sm:ml-5 lg:ml-8">
+      <div class="relative text-center min-w-[42px] xs:min-w-[46px] sm:min-w-[58px] group">
+        <i class="bi bi-people-fill text-lg xs:text-xl sm:text-2xl block transition group-hover:scale-110"></i>
+        <span class="absolute -top-0.5 -right-1.5 bg-mpuza-badge text-white text-[8px] xs:text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">10+</span>
+        <span class="text-[8.5px] xs:text-[9.5px] sm:text-xs mt-0.5 hidden xs:block lg:block text-white/90 group-hover:text-white">Network</span>
+      </div>
+
+      <div class="relative text-center min-w-[42px] xs:min-w-[46px] sm:min-w-[58px] group">
+        <i class="bi bi-book-half text-lg xs:text-xl sm:text-2xl block transition group-hover:scale-110"></i>
+        <span class="absolute -top-0.5 -right-1.5 bg-mpuza-badge text-white text-[8px] xs:text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">2</span>
+        <span class="text-[8.5px] xs:text-[9.5px] sm:text-xs mt-0.5 hidden xs:block lg:block text-white/90 group-hover:text-white">Courses</span>
+      </div>
+
+      <div class="relative text-center min-w-[42px] xs:min-w-[46px] sm:min-w-[58px] group">
+        <i class="bi bi-bell-fill text-lg xs:text-xl sm:text-2xl block transition group-hover:scale-110"></i>
+        <span class="absolute -top-0.5 -right-1.5 bg-mpuza-badge text-white text-[8px] xs:text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">7</span>
+        <span class="text-[8.5px] xs:text-[9.5px] sm:text-xs mt-0.5 hidden xs:block lg:block text-white/90 group-hover:text-white">Notifications</span>
+      </div>
+
+      <div class="relative text-center min-w-[42px] xs:min-w-[46px] sm:min-w-[58px] group">
+        <i class="bi bi-briefcase-fill text-lg xs:text-xl sm:text-2xl block transition group-hover:scale-110"></i>
+        <span class="absolute -top-0.5 -right-1.5 bg-mpuza-badge text-white text-[8px] xs:text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">9</span>
+        <span class="text-[8.5px] xs:text-[9.5px] sm:text-xs mt-0.5 hidden xs:block lg:block text-white/90 group-hover:text-white">Job Alerts</span>
+      </div>
+    </nav>
+
+    <!-- Search – original placement & style -->
+    <div class="flex-1 px-2 sm:px-3 relative hidden md:block">
+      <i class="bi bi-search absolute left-2 top-1/2 -translate-y-1/2 text-mpuza-lightblue text-base sm:text-lg pointer-events-none"></i>
+      <input
+        type="text"
+        placeholder="Search"
+        class="w-full py-1.5 sm:py-2 pl-8 sm:pl-9 pr-2 sm:pr-3 rounded border-none text-black focus:outline-none text-sm sm:text-base"
+      >
+    </div>
+
+    <!-- Right side -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <div class="hidden md:flex flex-col items-center text-xs">
+        <img src="profile.jpeg" alt="Profile" class="w-7 sm:w-8 h-7 sm:h-8 rounded-full object-cover">
+        <span class="hidden sm:block">Me ▼</span>
+      </div>
+      <button class="hidden md:block bg-white text-mpuza-red px-3 sm:px-4 py-1 sm:py-1.5 rounded-full font-bold text-xs sm:text-sm">
+        Become Refresher
+      </button>
+      <i class="bi bi-grid-3x3-gap text-xl sm:text-2xl cursor-pointer"></i>
+    </div>
+  </div>
+</header>
+
+<!-- SCROLLABLE AREAS -->
+<div class="flex pt-16 h-[calc(100vh-64px)] overflow-hidden">
+
+  <!-- LEFT SIDEBAR – scrollable -->
+  <aside class="hidden lg:block lg:w-64 xl:w-72 flex-shrink-0 bg-sidebarbg py-4 overflow-y-auto">
+    <div class="bg-profilecard rounded-lg text-center pb-4 mx-3 sm:mx-4 mb-4">
+      <div class="h-16 sm:h-20 bg-center bg-cover rounded-t-lg" style="background-image:url('background.png')"></div>
+      <img src="profile.jpeg" alt="Profile" class="w-16 sm:w-20 h-16 sm:h-20 rounded-full mx-auto -mt-8 sm:-mt-10 border-2 border-white">
+      <h3 class="mt-2 text-base sm:text-lg font-medium">NIYONSENGA Daniel</h3>
+      <p class="text-xs sm:text-sm text-gray-600 px-2">Briefly describe who you are</p>
+      <span class="text-mpuza-blue text-xs cursor-pointer hover:underline">Add Headline</span>
+    </div>
+
+    <div class="mx-3 sm:mx-4 space-y-1.5 sm:space-y-2 bg-white rounded-lg shadow-sm divide-y divide-gray-100 text-xs sm:text-sm">
+      <div class="flex justify-between px-3 sm:px-4 py-2.5">
+        <span>My profile viewer</span>
+        <span class="text-mpuza-badge font-bold">68</span>
+      </div>
+      <div class="flex justify-between px-3 sm:px-4 py-2.5">
+        <span>Job application</span>
+        <span class="text-mpuza-badge font-bold">13</span>
+      </div>
+      <div class="flex justify-between px-3 sm:px-4 py-2.5">
+        <span>Recruiter interviewed</span>
+        <span class="text-mpuza-badge font-bold">10</span>
+      </div>
+      <div class="flex justify-between px-3 sm:px-4 py-2.5">
+        <span>Saved favourite offers</span>
+        <span class="text-mpuza-badge font-bold">21</span>
+      </div>
+    </div>
+
+    <div class="mx-3 sm:mx-4 my-4 p-3 sm:p-4 bg-white rounded-lg shadow-sm">
+      <h4 class="font-semibold mb-2 text-sm sm:text-base">Company Page info</h4>
+      <p class="text-xs sm:text-sm text-mpuza-blue cursor-pointer hover:underline mb-2">Create company page</p>
+      <div class="text-center">
+        <img src="airtel.png" alt="Airtel" class="w-14 sm:w-16 mx-auto object-contain">
+        <p class="mt-1 text-sm sm:text-base">Airtel</p>
+      </div>
+      <div class="mt-3 space-y-1 text-xs sm:text-sm">
+        <p>Page visitors today: 99</p>
+        <p>Page followers today: 47</p>
+        <p>Applicants show interests: 11</p>
+      </div>
+    </div>
+
+    <div class="mx-3 sm:mx-4">
+      <h4 class="font-semibold mb-1 text-sm sm:text-base">Professional Group</h4>
+      <p class="text-xs sm:text-sm text-mpuza-blue cursor-pointer hover:underline">Create new group</p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT – scrollable -->
+  <main class="flex-1 overflow-y-auto p-4 sm:p-5 lg:p-6 space-y-5 lg:space-y-6 bg-pagebg">
+
+    <div class="bg-white rounded-lg p-4 shadow">
+      <h2 class="text-lg sm:text-xl font-bold">Home</h2>
+    </div>
+
+    <!-- POST BOX (editable) -->
+    <div class="bg-white rounded-lg p-4 shadow flex flex-col md:flex-row gap-4 md:items-start">
+      <div class="flex-1 w-full">
+        <textarea
+          placeholder="I have a Job, I can post to support Jobless!"
+          class="w-full py-2 pl-3 pr-3 rounded border border-gray-300 text-black focus:outline-none focus:border-mpuza-blue min-h-[60px] resize-y text-sm sm:text-base"
+          rows="2"
+        ></textarea>
+
+        <div class="mt-2 flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm">
+          <span class="text-mpuza-blue cursor-pointer">Your Followers ▼</span>
+          <span class="text-mpuza-blue font-medium">US$ 99.99 ▼</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-4 mt-3 md:mt-0">
+        <button class="bg-[#66b1cf] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-medium">
+          Post
+        </button>
+        <span class="text-mpuza-blue font-bold text-sm sm:text-base">
+          16,000 Jobless
+        </span>
+      </div>
+    </div>
+
+    <!-- MINI CARDS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <!-- Airtel Rwanda card -->
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <img src="airtel.png" alt="Airtel Rwanda" class="w-12 h-12 mx-auto object-contain">
+        <h4 class="mt-3 font-semibold text-base">Airtel Rwanda</h4>
+        <p class="font-bold text-xs sm:text-sm">Network & System Administrator</p>
+        <p class="text-xs text-gray-600 mt-1">Bachelor Degree in Software Engineering</p>
+        <button class="mt-3 bg-mpuza-blue text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition">
+          Urgent Hiring!
+        </button>
+      </div>
+
+      <!-- Twapela card -->
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <img src="twapela.png" alt="Twapela" class="w-12 h-12 mx-auto object-contain">
+        <h4 class="mt-3 font-semibold text-base">Twapela</h4>
+        <p class="font-bold text-xs sm:text-sm">Machine Learning Engineer</p>
+        <p class="text-xs text-gray-600 mt-1">Masters Degree in Mathematics</p>
+        <button class="mt-3 bg-mpuza-blue text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition">
+          Urgent Hiring!
+        </button>
+      </div>
+
+      <!-- Mpuza card -->
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <img src="mpuza.png" alt="Mpuza, Inc." class="w-12 h-12 mx-auto object-contain">
+        <h4 class="mt-3 font-semibold text-base">Mpuza, Inc.</h4>
+        <p class="font-bold text-xs sm:text-sm">Legal Officer</p>
+        <p class="text-xs text-gray-600 mt-1">Bachelor Degree in International Law</p>
+        <button class="mt-3 bg-mpuza-blue text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition">
+          Urgent Hiring!
+        </button>
+      </div>
+    </div>
+
+    <!-- JOB CARDS -->
+    <div class="space-y-4 sm:space-y-5">
+      <div class="bg-white rounded-lg p-4 shadow">
+        <div class="flex justify-between items-start">
+          <h4 class="font-semibold text-base sm:text-lg">Airtel Rwanda</h4>
+          <span class="text-mpuza-blue text-sm cursor-pointer hover:underline">Follow</span>
+        </div>
+        <ul class="mt-2 list-disc list-inside text-sm space-y-1">
+          <li>3 Vacant Positions</li>
+          <li>1 Year of Experience</li>
+        </ul>
+        <div class="flex flex-wrap gap-4 sm:gap-6 text-mpuza-red mt-3 text-xs sm:text-sm">
+          <span>04 Days</span>
+          <span>08 Hours</span>
+          <span>44 Minutes</span>
+        </div>
+        <div class="flex justify-around mt-4 sm:mt-5 text-xs sm:text-sm text-gray-700 pt-3 border-t">
+          <span class="cursor-pointer hover:text-mpuza-red">Like</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Comment</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Share</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Favourite</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg p-4 shadow">
+        <div class="flex justify-between items-start">
+          <h4 class="font-semibold text-base sm:text-lg">One Acre Fund</h4>
+          <span class="text-mpuza-blue text-sm cursor-pointer hover:underline">Follow</span>
+        </div>
+        <ul class="mt-2 list-disc list-inside text-sm space-y-1">
+          <li>3 Vacant Positions</li>
+          <li>1 Year of Experience</li>
+          <li>Bachelor Degree in Software Engineering</li>
+        </ul>
+        <div class="flex justify-around mt-4 sm:mt-5 text-xs sm:text-sm text-gray-700 pt-3 border-t">
+          <span class="cursor-pointer hover:text-mpuza-red">Like</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Comment</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Share</span>
+          <span class="cursor-pointer hover:text-mpuza-red">Favourite</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RIGHT PANEL – scrollable -->
+  <aside class="hidden xl:block xl:w-80 2xl:w-96 flex-shrink-0 bg-sidebarbg p-5 overflow-y-auto border-l border-blue-100/30">
+    <div class="bg-white rounded-lg p-5 shadow space-y-4 text-sm">
+      <h4 class="font-semibold text-base lg:text-lg">Job Description</h4>
+      <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <div>
+        <strong class="block mb-1">Number of Positions</strong>
+        <ul class="list-disc list-inside"><li>Lorem ipsum dolor sit amet</li></ul>
+      </div>
+
+      <div>
+        <strong class="block mb-1">Direct Supervisor</strong>
+        <ul class="list-disc list-inside"><li>Lorem ipsum dolor sit amet</li></ul>
+      </div>
+
+      <div>
+        <strong class="block mb-1">Duties and Responsibilities</strong>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Lorem ipsum dolor sit amet</li>
+        </ul>
+      </div>
+
+      <div>
+        <strong class="block mb-1">Qualifications</strong>
+        <ul class="list-disc list-inside"><li>Lorem ipsum dolor sit amet</li></ul>
+      </div>
+
+      <div>
+        <strong class="block mb-1">Experience</strong>
+        <ul class="list-disc list-inside"><li>Lorem ipsum dolor sit amet</li></ul>
+      </div>
+
+      <div>
+        <strong class="block mb-1">Certificate</strong>
+        <ul class="list-disc list-inside"><li>Lorem ipsum dolor sit amet</li></ul>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+</body>
+</html>
